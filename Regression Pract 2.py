@@ -1,6 +1,7 @@
 import quandl, math, datetime
 import numpy as np
-from sklearn import preprocessing, model_selection, svm
+from sklearn import preprocessing
+from sklearn import model_selection, svm
 import matplotlib.pyplot as plt
 import pickle
 from matplotlib import style
@@ -30,13 +31,15 @@ The preprocessing.scale() is called on x to standardize the dataset along the x 
 classifier. 
 Preprocessing step adds to processing time. Not suitable for High Frequency Trading
 """
-x = np.array(df.drop(['label'],1)
-x = x[:-forecast_out]
+
 '''
 x_lately is what we're predicting against. 
 '''
-x_lately = x[-forecast_out:]
+x = np.array(df.drop(['label'],1)
 x = preprocessing.scale(x)
+x_lately = x[-forecast_out:]
+x = x[:-forecast_out]
+
 
 df.dropna(inplace=True)
 y = np.array(df['label'])
@@ -58,4 +61,3 @@ clf.fit(x_train,y_train)
 accuracy = clf.score(x_test,y_test)
 
 print(accuracy)
-print(accuracySVM)
