@@ -1,10 +1,11 @@
 import quandl, math, datetime
 import numpy as np
+import sklearn
 from sklearn import preprocessing
-from sklearn import model_selection, svm
 import matplotlib.pyplot as plt
 import pickle
 from matplotlib import style
+from sklearn.linear_model import LinearRegression
 
 df = quandl.get('WIKI/GOOGL')
 
@@ -37,9 +38,10 @@ x_lately is what we're predicting against.
 '''
 x = np.array(df.drop(['label'],1)
 x = preprocessing.scale(x)
-x_lately = x[-forecast_out:]
-x = x[:-forecast_out]
 
+
+x = x[:-forecast_out]
+x_lately = x[-forecast_out:]
 
 df.dropna(inplace=True)
 y = np.array(df['label'])
