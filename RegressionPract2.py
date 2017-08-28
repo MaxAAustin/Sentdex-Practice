@@ -1,10 +1,7 @@
-import quandl, math, datetime
+import math
 import numpy as np
-import sklearn
-from sklearn import preprocessing
-import matplotlib.pyplot as plt
-import pickle
-from matplotlib import style
+import quandl
+from sklearn import preprocessing, model_selection
 from sklearn.linear_model import LinearRegression
 
 df = quandl.get('WIKI/GOOGL')
