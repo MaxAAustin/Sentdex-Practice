@@ -28,15 +28,15 @@ df['label'] = df[forecast_col].shift(-forecast_out)
 
 """
 Features are defined by lowercase x and y.
-The preprocessing.scale() is called on x to standardize the dataset along the x axis before sending it to the 
+The pre-processing.scale() is called on x to standardize the data set along the x axis before sending it to the 
 classifier. 
-Preprocessing step adds to processing time. Not suitable for High Frequency Trading
+Pre-processing step adds to processing time. Not suitable for High Frequency Trading
 """
 
 '''
 x_lately is what we're predicting against. 
 '''
-x = np.array(df.drop(['label'],1)
+x = np.array(df.drop(['label'],1))
 x = preprocessing.scale(x)
 
 
